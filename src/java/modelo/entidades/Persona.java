@@ -75,7 +75,7 @@ public class Persona implements Serializable {
     @ManyToMany
     private List<Vehiculo> vehiculoList;
     @JoinColumn(name = "id_vehiculo", referencedColumnName = "id_vehiculo")
-    @ManyToOne(optional = false)
+    @ManyToOne
     private Vehiculo vehiculo;
 
     public Persona() {

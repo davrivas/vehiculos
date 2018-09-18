@@ -8,7 +8,6 @@ package modelo.entidades;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -67,7 +66,7 @@ public class Vehiculo implements Serializable {
         @JoinColumn(name = "id_persona", referencedColumnName = "id_persona")})
     @ManyToMany
     private List<Persona> personaList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "vehiculo")
+    @OneToMany(mappedBy = "vehiculo")
     private List<Persona> personaList1;
 
     public Vehiculo() {
