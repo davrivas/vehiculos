@@ -18,41 +18,41 @@
                     <div class="row">
                         <div class="col-12 col-md-6 p-3">
                             <h:outputLabel value="Nombres" for="nombres" />
-                            <h:inputText class="form-control" id="nombres" a:pattern="[A-Za-z]" value="#{personaControlador.nuevaPersona.nombres}" title="Nombres" required="true"/>
+                            <h:inputText class="form-control" id="nombres" a:pattern="[A-Za-z]" value="#{personaControlador.nuevaPersona.nombres}" title="Nombres" a:required=""/>
                         </div>
                         <div class="col-12 col-md-6 p-3">
                             <h:outputLabel value="Apellidos" for="apellidos" />
-                            <h:inputText class="form-control" id="apellidos" a:pattern="[A-Za-z]" value="#{personaControlador.nuevaPersona.apellidos}" title="Apellidos" required="true"/>
+                            <h:inputText class="form-control" id="apellidos" a:pattern="[A-Za-z]" value="#{personaControlador.nuevaPersona.apellidos}" title="Apellidos" a:required=""/>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-12 col-md-6 p-3">
                             <h:outputLabel value="Fecha de nacimiento:" for="fechaNacimiento" />
-                            <h:inputText class="form-control" id="fechaNacimiento" value="#{personaControlador.nuevaPersona.fechaNacimiento}" title="FechaNacimiento" required="true" requiredMessage="The FechaNacimiento field is required." a:type="date">
+                            <h:inputText class="form-control" id="fechaNacimiento" value="#{personaControlador.nuevaPersona.fechaNacimiento}" title="FechaNacimiento" a:required="" a:type="date">
                                 <f:convertDateTime pattern="MM/dd/yyyy" />
                             </h:inputText>
                         </div>
                         <div class="col-12 col-md-6 p-3">
                             <h:outputLabel value="Identificación" for="identificacion" />
-                            <h:inputText class="form-control" id="identificacion" a:pattern="[0-9]" value="#{personaControlador.nuevaPersona.identificacion}" title="Identificacion" required="true"/>
+                            <h:inputText class="form-control" id="identificacion" a:pattern="[0-9]" value="#{personaControlador.nuevaPersona.identificacion}" title="Identificacion" a:required=""/>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-12 col-md-6 p-3">
                             <h:outputLabel value="¿Casado?" for="casado" />
-                        <!--<h:inputText id="casado" value="#{personaControlador.nuevaPersona.casado}" title="Casado" required="true" requiredMessage="The Casado field is required."/>-->
-                            <!--                        <h:selectOneMenu>
-                                                        <f:selectItem class="form-radio" value="1" itemLabel="Si"/>
-                                                        <f:selectItem class="form-radio" value="0" itemLabel="No"/>
-                                                    </h:selectOneMenu>-->
+                            <h:selectOneMenu class="form-control" a:required="">
+                                <f:selectItem itemValue="" itemLabel="Seleccionar"/>
+                                <f:selectItem itemValue="1" itemLabel="Si"/>
+                                <f:selectItem itemValue="0" itemLabel="No"/>
+                            </h:selectOneMenu>
                         </div>
                         <div class="col-12 col-md-6 p-3">
                             <h:outputLabel value="Ingresos mensuales" for="ingresosMensuales" />
-                            <h:inputText class="form-control" a:pattern="[0-9]" id="ingresosMensuales" value="#{personaControlador.nuevaPersona.ingresosMensuales}" title="IngresosMensuales" required="true" requiredMessage="The IngresosMensuales field is required."/>
+                            <h:inputText class="form-control" a:pattern="[0-9]" id="ingresosMensuales" value="#{personaControlador.nuevaPersona.ingresosMensuales}" title="IngresosMensuales" a:required=""/>
                         </div>
                     </div>
-                    <!--                    <h:outputLabel value="Vehiculo:" for="vehiculo" />
-                                        <h:selectOneMenu id="vehiculo" value="#{personaControlador.nuevaPersona.vehiculo}" title="Vehiculo" >
+                    <!--                    <h:outputLabel value="Vehiculo" for="vehiculo" />
+                                        <h:selectOneMenu id="vehiculo" value="#{personaControlador.nuevaPersona.vehiculo}" title="Vehiculo" a:required="">
                                              TODO: update below reference to list of available items
                                             <f:selectItems value="#{fixme}"/>
                                         </h:selectOneMenu>-->
