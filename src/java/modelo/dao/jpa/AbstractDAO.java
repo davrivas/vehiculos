@@ -12,6 +12,7 @@ import javax.persistence.PersistenceContext;
 /**
  *
  * @author davr
+ * @param <T>
  */
 public abstract class AbstractDAO<T> {
 
@@ -24,7 +25,7 @@ public abstract class AbstractDAO<T> {
         this.entityClass = entityClass;
     }
 
-    public EntityManager getEntityManager() {
+    protected EntityManager getEntityManager() {
         return entityManager;
     }
 
