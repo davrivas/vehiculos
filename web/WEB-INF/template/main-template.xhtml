@@ -8,10 +8,12 @@
         <ui:include src="/WEB-INF/template/head.xhtml"/>
     </h:head>
     <h:body>
-        <div class="contanier">
+        <div class="container">
             <ui:include src="/WEB-INF/template/header.xhtml"/>
             
-            <ui:insert name="contenido"></ui:insert>
+            <div class="row">
+                <ui:insert name="contenido"></ui:insert>
+            </div>
             
             <ui:include src="/WEB-INF/template/footer.xhtml"/>
         </div>
