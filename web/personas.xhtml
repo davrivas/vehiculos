@@ -3,13 +3,66 @@
 <ui:composition template="/WEB-INF/template/main-template.xhtml"
                 xmlns="http://www.w3.org/1999/xhtml"
                 xmlns:h="http://xmlns.jcp.org/jsf/html"
-                xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
     <ui:define name="title">Personas</ui:define>
     <ui:define name="contenido">
-        <h2 class="text-center"><span class="fa fa-users"></span> Personas</h2>        
-        <button type="button" class="btn btn-primary ml-1" data-toggle="modal" data-target="#modal-persona">
-            <span class="fa fa-plus"></span> Agregar persona
-        </button>
+        <div class="d-flex justify-content-between mb-3">
+            <h2 class="text-center"><span class="fa fa-users"></span> Personas</h2>        
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-persona">
+                <span class="fa fa-plus"></span> Agregar persona
+            </button>
+        </div>        
+
+        <h:panelGroup rendered="#{empty personaControlador.todasLasPersonas}">
+            <div class="alert alert-info text-center">
+                No hay personas registradas
+            </div>
+        </h:panelGroup>
+
+        <h:panelGroup rendered="#{not empty personaControlador.todasLasPersonas}">
+            <h:dataTable class="table table-striped" value="#{personaControlador.todasLasPersonas}" var="p">
+                <h:column>
+                    <f:facet name="header">ID</f:facet>
+                    <h:outputText value="#{p.idPersona}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Nombres</f:facet>
+                    <h:outputText value="#{p.nombres}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Apellidos</f:facet>
+                    <h:outputText value="#{p.apellidos}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Fecha de nacimiento</f:facet>
+                    <h:outputText value="#{p.fechaNacimiento}">
+                        <f:convertDateTime parent="yyyy/HH/dd"/>
+                    </h:outputText>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Identificación</f:facet>
+                    <h:outputText value="#{p.identificacion}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Casado</f:facet>
+                    <h:panelGroup rendered="#{p.casado == 1}">
+                        <h:outputText value="Si"/>
+                    </h:panelGroup>
+                    <h:panelGroup rendered="#{p.casado == 0}">
+                        <h:outputText value="No"/>
+                    </h:panelGroup>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Ingresos mensuales</f:facet>
+                    <h:outputText value="$#{p.ingresosMensuales}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Vehiculo</f:facet>
+                    <h:outputText value="vehiculo"/>
+                </h:column>
+            </h:dataTable>
+        </h:panelGroup>
     </ui:define>
     <ui:define name="modales">
         <ui:include src="/WEB-INF/template/modales/modal-persona.xhtml"/>

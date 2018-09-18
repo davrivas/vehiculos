@@ -14,17 +14,15 @@ import modelo.entidades.Persona;
  * @param <T>
  */
 public interface IDAO<T> {
-    public void create(T obj);
+    public void insertar(T obj);
 
-    public void edit(T obj);
+    public void editar(T obj);
 
-    public void remove(T obj);
+    public void eliminar(T obj);
 
-    public T find(Object id);
+    public T buscarPorId(Object id);
 
-    public List<T> findAll();
+    public List<T> mostrarTodos();
 
-    public List<T> findRange(int[] range);
-
-    public int count();
+    public int contar();
 }

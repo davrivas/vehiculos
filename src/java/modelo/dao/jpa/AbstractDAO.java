@@ -8,13 +8,14 @@ package modelo.dao.jpa;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import modelo.dao.IDAO;
 
 /**
  *
  * @author davr
  * @param <T>
  */
-public abstract class AbstractDAO<T> {
+public abstract class AbstractDAO<T> implements IDAO<T> {
 
     @PersistenceContext(unitName = "vehiculosPU")
     private EntityManager entityManager;
@@ -29,38 +30,35 @@ public abstract class AbstractDAO<T> {
         return entityManager;
     }
 
-    public void create(T entity) {
+    @Override
+    public void insertar(T entity) {
         getEntityManager().persist(entity);
     }
 
-    public void edit(T entity) {
+    @Override
+    public void editar(T entity) {
         getEntityManager().merge(entity);
     }
 
-    public void remove(T entity) {
+    @Override
+    public void eliminar(T entity) {
         getEntityManager().remove(getEntityManager().merge(entity));
     }
 
-    public T find(Object id) {
+    @Override
+    public T buscarPorId(Object id) {
         return getEntityManager().find(entityClass, id);
     }
 
-    public List<T> findAll() {
+    @Override
+    public List<T> mostrarTodos() {
         javax.persistence.criteria.CriteriaQuery cq = getEntityManager().getCriteriaBuilder().createQuery();
         cq.select(cq.from(entityClass));
         return getEntityManager().createQuery(cq).getResultList();
     }
 
-    public List<T> findRange(int[] range) {
-        javax.persistence.criteria.CriteriaQuery cq = getEntityManager().getCriteriaBuilder().createQuery();
-        cq.select(cq.from(entityClass));
-        javax.persistence.Query q = getEntityManager().createQuery(cq);
-        q.setMaxResults(range[1] - range[0] + 1);
-        q.setFirstResult(range[0]);
-        return q.getResultList();
-    }
-
-    public int count() {
+    @Override
+    public int contar() {
         javax.persistence.criteria.CriteriaQuery cq = getEntityManager().getCriteriaBuilder().createQuery();
         javax.persistence.criteria.Root<T> rt = cq.from(entityClass);
         cq.select(getEntityManager().getCriteriaBuilder().count(rt));
