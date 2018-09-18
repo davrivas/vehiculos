@@ -6,7 +6,13 @@
                 xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     <ui:define name="title">Personas</ui:define>
     <ui:define name="contenido">
-        <h2 class="text-center">Personas</h2>
+        <h2 class="text-center"><span class="fa fa-users"></span> Personas</h2>        
+        <button type="button" class="btn btn-primary ml-1" data-toggle="modal" data-target="#modal-persona">
+            <span class="fa fa-plus"></span> Agregar persona
+        </button>
+    </ui:define>
+    <ui:define name="modales">
+        <ui:include src="/WEB-INF/template/modales/modal-persona.xhtml"/>
     </ui:define>
 </ui:composition>
 
