@@ -10,16 +10,14 @@
     <h:body>
         <div class="container">
             <ui:include src="/WEB-INF/template/header.xhtml"/>
-            
-            <div class="container-fluid">
-                <ui:insert name="contenido"></ui:insert>
-            </div>
-            
-            <ui:include src="/WEB-INF/template/footer.xhtml"/>
+
+            <ui:insert name="contenido"></ui:insert>
         </div>
-        
+
+        <ui:include src="/WEB-INF/template/footer.xhtml"/>
+
         <ui:insert name="modales"></ui:insert>
-        
+
         <ui:include src="/WEB-INF/template/scripts.xhtml"/>
     </h:body>
 </html>

@@ -6,17 +6,23 @@
                 xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     <ui:define name="title">Inicio</ui:define>
     <ui:define name="contenido">
-        <div class="col mr-3 p-3 border">
-            <h3 class="text-center">Personas</h3> <br/>
-            <a href="personas.xhtml">
-                <p class="text-center"><span class="fa fa-users fa-10x"></span></p>
-            </a>
-        </div>
-        <div class="col ml-3 p-3 border">
-            <h3 class="text-center">Vehículos</h3> <br/>
-            <a href="vehiculos.xhtml">
-                <p class="text-center"><span class="fa fa-car fa-10x"></span></p>
-            </a>
+        <div class="row">
+            <div class="col-12 col-md p-1">
+                <div class="col-12 border p-3 d-flex justify-content-center align-items-middle">
+                    <h3>Personas</h3>
+                    <a href="personas.xhtml">
+                        <span class="fa fa-users fa-10x"></span>
+                    </a>
+                </div>
+            </div>
+            <div class="col-12 col-md p-1">
+                <div class="col-12 border p-3 d-flex justify-content-center align-items-middle">
+                    <h3>Vehículos</h3>
+                    <a href="vehiculos.xhtml">
+                        <span class="fa fa-car fa-10x"></span>
+                    </a>
+                </div>
+            </div>
         </div>
     </ui:define>
 </ui:composition>

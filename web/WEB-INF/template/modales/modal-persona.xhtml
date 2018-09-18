@@ -3,7 +3,8 @@
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
                 xmlns:h="http://xmlns.jcp.org/jsf/html"
                 xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-                xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+                xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
     <div class="modal fade" id="modal-persona" tabindex="-1" role="dialog" aria-labelledby="modal-persona-titulo" aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
             <h:form prependId="false" class="modal-content" a:novalidate="">
@@ -14,7 +15,47 @@
                     </button>
                 </div>
                 <div class="modal-body p-3">
-                    ...
+                    <div class="row">
+                        <div class="col-12 col-md-6 p-3">
+                            <h:outputLabel value="Nombres" for="nombres" />
+                            <h:inputText class="form-control" id="nombres" a:pattern="[A-Za-z]" value="#{personaControlador.nuevaPersona.nombres}" title="Nombres" required="true"/>
+                        </div>
+                        <div class="col-12 col-md-6 p-3">
+                            <h:outputLabel value="Apellidos" for="apellidos" />
+                            <h:inputText class="form-control" id="apellidos" a:pattern="[A-Za-z]" value="#{personaControlador.nuevaPersona.apellidos}" title="Apellidos" required="true"/>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 col-md-6 p-3">
+                            <h:outputLabel value="Fecha de nacimiento:" for="fechaNacimiento" />
+                            <h:inputText class="form-control" id="fechaNacimiento" value="#{personaControlador.nuevaPersona.fechaNacimiento}" title="FechaNacimiento" required="true" requiredMessage="The FechaNacimiento field is required." a:type="date">
+                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                            </h:inputText>
+                        </div>
+                        <div class="col-12 col-md-6 p-3">
+                            <h:outputLabel value="Identificación" for="identificacion" />
+                            <h:inputText class="form-control" id="identificacion" a:pattern="[0-9]" value="#{personaControlador.nuevaPersona.identificacion}" title="Identificacion" required="true"/>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 col-md-6 p-3">
+                            <h:outputLabel value="¿Casado?" for="casado" />
+                        <!--<h:inputText id="casado" value="#{personaControlador.nuevaPersona.casado}" title="Casado" required="true" requiredMessage="The Casado field is required."/>-->
+                            <!--                        <h:selectOneMenu>
+                                                        <f:selectItem class="form-radio" value="1" itemLabel="Si"/>
+                                                        <f:selectItem class="form-radio" value="0" itemLabel="No"/>
+                                                    </h:selectOneMenu>-->
+                        </div>
+                        <div class="col-12 col-md-6 p-3">
+                            <h:outputLabel value="Ingresos mensuales" for="ingresosMensuales" />
+                            <h:inputText class="form-control" a:pattern="[0-9]" id="ingresosMensuales" value="#{personaControlador.nuevaPersona.ingresosMensuales}" title="IngresosMensuales" required="true" requiredMessage="The IngresosMensuales field is required."/>
+                        </div>
+                    </div>
+                    <!--                    <h:outputLabel value="Vehiculo:" for="vehiculo" />
+                                        <h:selectOneMenu id="vehiculo" value="#{personaControlador.nuevaPersona.vehiculo}" title="Vehiculo" >
+                                             TODO: update below reference to list of available items
+                                            <f:selectItems value="#{fixme}"/>
+                                        </h:selectOneMenu>-->
                 </div>
                 <div class="modal-footer">
                     <h:commandButton value="Agregar persona" class="btn btn-primary" a:type="submit"/>

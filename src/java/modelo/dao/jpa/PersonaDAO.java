@@ -6,8 +6,6 @@
 package modelo.dao.jpa;
 
 import javax.ejb.Stateless;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 import modelo.entidades.Persona;
 import modelo.dao.IPersonaDAO;
 

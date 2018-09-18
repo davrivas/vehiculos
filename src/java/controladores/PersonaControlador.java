@@ -6,9 +6,7 @@
 package controladores;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
-import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.inject.Named;
 import javax.faces.view.ViewScoped;
@@ -26,20 +24,46 @@ public class PersonaControlador implements Serializable {
     @EJB
     private IPersonaDAO pDAO;
     private List<Persona> todasLasPersonas;
+    private Persona nuevaPersona = new Persona();
+    private Persona personaSeleccionada = new Persona();
 
     public PersonaControlador() {
     }
-    
-    @PostConstruct
-    public void init() {
-        todasLasPersonas = new ArrayList<>();
-    }
 
     public List<Persona> getTodasLasPersonas() {
-        if (todasLasPersonas == null || todasLasPersonas.isEmpty()) {
-            todasLasPersonas = pDAO.mostrarTodos();
-        }
-        return todasLasPersonas;
+        return pDAO.mostrarTodos();
+    }
+
+    public Persona getNuevaPersona() {
+        return nuevaPersona;
+    }
+
+    public void setNuevaPersona(Persona nuevaPersona) {
+        this.nuevaPersona = nuevaPersona;
+    }
+
+    public Persona getPersonaSeleccionada() {
+        return personaSeleccionada;
+    }
+
+    public void setPersonaSeleccionada(Persona personaSeleccionada) {
+        this.personaSeleccionada = personaSeleccionada;
+    }
+    
+    public void seleccionarPersona(Persona p) {
+        personaSeleccionada = p;
+    }
+    
+    public void agregarPersona() {
+        pDAO.insertar(nuevaPersona);
+    }
+    
+    public void modificarPersona() {
+        pDAO.editar(personaSeleccionada);
+    }
+    
+    public void eliminarPersona() {
+        pDAO.eliminar(personaSeleccionada);
     }
     
 }
