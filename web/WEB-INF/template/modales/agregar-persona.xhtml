@@ -5,9 +5,9 @@
                 xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
                 xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
                 xmlns:f="http://xmlns.jcp.org/jsf/core">
-    <div class="modal fade" id="modal-persona" tabindex="-1" role="dialog" aria-labelledby="modal-persona-titulo" aria-hidden="true">
+    <div class="modal fade" id="agregar-persona" tabindex="-1" role="dialog" aria-labelledby="modal-persona-titulo" aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
-            <h:form prependId="false" class="modal-content" a:novalidate="">
+            <h:form prependId="false" class="modal-content needs-validation" a:novalidate="">
                 <div class="modal-header">
                     <h5 class="modal-title" id="modal-persona-titulo">Agregar persona</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
@@ -18,23 +18,35 @@
                     <div class="row">
                         <div class="col-12 col-md-6 p-3">
                             <h:outputLabel value="Nombres" for="nombres" />
-                            <h:inputText class="form-control" id="nombres" a:pattern="[A-Za-z]" value="#{personaControlador.nuevaPersona.nombres}" title="Nombres" a:required=""/>
+                            <h:inputText class="form-control" id="nombres" a:maxlength="50" value="#{personaControlador.nuevaPersona.nombres}" title="Nombres" a:required=""/>
+                            <div class="invalid-feedback">
+                                Escriba un nombre
+                            </div>
                         </div>
                         <div class="col-12 col-md-6 p-3">
                             <h:outputLabel value="Apellidos" for="apellidos" />
-                            <h:inputText class="form-control" id="apellidos" a:pattern="[A-Za-z]" value="#{personaControlador.nuevaPersona.apellidos}" title="Apellidos" a:required=""/>
+                            <h:inputText class="form-control" id="apellidos" a:maxlength="50" value="#{personaControlador.nuevaPersona.apellidos}" title="Apellidos" a:required=""/>
+                            <div class="invalid-feedback">
+                                Escriba un apellido
+                            </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-12 col-md-6 p-3">
                             <h:outputLabel value="Fecha de nacimiento:" for="fechaNacimiento" />
                             <h:inputText class="form-control" id="fechaNacimiento" value="#{personaControlador.nuevaPersona.fechaNacimiento}" title="FechaNacimiento" a:required="" a:type="date">
-                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                                <f:convertDateTime pattern="yyyy/MM/dd" />
                             </h:inputText>
+                            <div class="invalid-feedback">
+                                Seleccione una fecha
+                            </div>
                         </div>
                         <div class="col-12 col-md-6 p-3">
                             <h:outputLabel value="Identificación" for="identificacion" />
-                            <h:inputText class="form-control" id="identificacion" a:pattern="[0-9]" value="#{personaControlador.nuevaPersona.identificacion}" title="Identificacion" a:required=""/>
+                            <h:inputText class="form-control" id="identificacion" a:type="number" a:min="0" a:max="99999999999999999999" value="#{personaControlador.nuevaPersona.identificacion}" title="Identificacion" a:required=""/>
+                            <div class="invalid-feedback">
+                                Digite un número de identificación
+                            </div>
                         </div>
                     </div>
                     <div class="row">
@@ -45,10 +57,16 @@
                                 <f:selectItem itemValue="1" itemLabel="Si"/>
                                 <f:selectItem itemValue="0" itemLabel="No"/>
                             </h:selectOneMenu>
+                            <div class="invalid-feedback">
+                                Seleccione una opción
+                            </div>
                         </div>
                         <div class="col-12 col-md-6 p-3">
                             <h:outputLabel value="Ingresos mensuales" for="ingresosMensuales" />
-                            <h:inputText class="form-control" a:pattern="[0-9]" id="ingresosMensuales" value="#{personaControlador.nuevaPersona.ingresosMensuales}" title="IngresosMensuales" a:required=""/>
+                            <h:inputText class="form-control" a:type="number" a:min="0" id="ingresosMensuales" value="#{personaControlador.nuevaPersona.ingresosMensuales}" title="IngresosMensuales" a:required=""/>
+                            <div class="invalid-feedback">
+                                Escriba un valor en pesos ($)
+                            </div>
                         </div>
                     </div>
                     <!--                    <h:outputLabel value="Vehiculo" for="vehiculo" />

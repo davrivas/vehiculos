@@ -7,6 +7,7 @@ package controladores;
 
 import java.io.Serializable;
 import java.util.List;
+import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.inject.Named;
 import javax.faces.view.ViewScoped;
@@ -24,14 +25,21 @@ public class PersonaControlador implements Serializable {
     @EJB
     private IPersonaDAO pDAO;
     private List<Persona> todasLasPersonas;
-    private Persona nuevaPersona = new Persona();
-    private Persona personaSeleccionada = new Persona();
+    private Persona nuevaPersona;
+    private Persona personaSeleccionada;
 
     public PersonaControlador() {
     }
+    
+    @PostConstruct
+    public void init() {
+        todasLasPersonas = pDAO.mostrarTodos();
+        nuevaPersona = new Persona();
+        personaSeleccionada = new Persona();
+    }
 
     public List<Persona> getTodasLasPersonas() {
-        return pDAO.mostrarTodos();
+        return todasLasPersonas;
     }
 
     public Persona getNuevaPersona() {
